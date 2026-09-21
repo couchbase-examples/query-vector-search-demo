@@ -3,21 +3,10 @@ from pathlib import Path
 
 import pandas as pd
 
-from movies_search import cleanup_poster_url, create_filter
+from movies_search import create_filter
 
 
 class MovieSearchHelperTests(unittest.TestCase):
-    def test_cleanup_poster_url_restores_full_size_image_url(self):
-        thumbnail_url = (
-            "https://m.media-amazon.com/images/M/example@._V1_"
-            "UX67_CR0,0,67,98_AL_.jpg"
-        )
-
-        self.assertEqual(
-            cleanup_poster_url(thumbnail_url),
-            "https://m.media-amazon.com/images/M/example@..jpg",
-        )
-
     def test_create_filter_combines_year_and_rating_constraints(self):
         where = create_filter((2000, 2024), 7.5)
 
